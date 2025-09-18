@@ -11,7 +11,7 @@ model Meal {
   id        String   @id @default(cuid())
   userId    String
   menuId    String
-  date      DateTime @default(now())
+  date      String
   shift     String
 
   @@unique([userId, date, shift])

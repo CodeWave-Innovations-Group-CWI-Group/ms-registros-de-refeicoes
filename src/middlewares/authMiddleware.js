@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function authMiddleware(req, res, next) {
 
-    const token = req.header('Authorization')?.replace('Bearer', '').trim();
+    const token = req.header('Authorization');
 
     if (!token) {
         return res.status(401).json({
@@ -11,15 +11,20 @@ export default async function authMiddleware(req, res, next) {
     }
 
     try {
-        const response = await axios.get("https://ad64f6d6ca53.ngrok-free.app/api/v1/auth/register/", {
-            headers: { Authorization: `Bearer ${token}` }
+        const response = await axios.get("http://a367af721df9.ngrok-free.app/api/v1/auth/validate-token/", {
+            headers: { Authorization: `${token}` }
         });
 
-        req.user = response.data;
+        const responseInfoUser = await axios.get("http://a367af721df9.ngrok-free.app/api/v1/profile/me/", {
+            headers: { Authorization: `${token}` }
+        });
+
+        req.user = responseInfoUser.data;
 
         next();
 
     } catch (error) {
+        console.log(error)
         res.status(401).json({
             error: "Token inválido"
         });

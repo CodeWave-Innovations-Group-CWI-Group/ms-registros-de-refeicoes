@@ -5,6 +5,6 @@ const routes = express.Router();
 
 routes.post("/create", authMiddleware, createMealController);
 routes.get("/user/meals/history", authMiddleware, findHistoryMealsOfUserController);
-routes.get("/meals/day", authMiddleware, findNumberOfMealsOfDateController);
+routes.get("/day", authMiddleware, findNumberOfMealsOfDateController);
 
 export default routes;

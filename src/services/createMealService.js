@@ -15,12 +15,14 @@ export default async function createMealService(userId, menuId) {
             throw new Error("ERRO: Fora do horário de funcionamento.")
         }
 
-        dateMeal.setHours(0,0,0,0);
-        const createMeal = await createMealRepository(userId, menuId, dateMeal, shiftMeal);
+        const dayMeal = dateMeal.toLocaleDateString('en-CA');
+        console.log(dayMeal)
+        const createMeal = await createMealRepository(userId, menuId, dayMeal, shiftMeal);
 
         return createMeal;
 
     }catch(error){
+        console.error(error);
         throw error;
     }
 }

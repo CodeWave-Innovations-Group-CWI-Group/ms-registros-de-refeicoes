@@ -35,7 +35,6 @@ export async function findHistoryMealsOfUserRepository(userId) {
 
 export async function findNumberOfMealsOfDateRepository(day) {
     try {
-        const day = new Date(`${day}T00:00:00.000Z`)
         const findMealsDay = await prisma.meal.count({
             where: {
                 date: day
@@ -47,13 +46,12 @@ export async function findNumberOfMealsOfDateRepository(day) {
     }
 }
 
-export async function findHistoryOfMealsOfDateRepository(day) {
+export async function findHistoryOfMealsOfDateRepository(dayInput) {
     try {
-         const day = new Date(`${day}T00:00:00.000Z`)
 
         const findMealsDay = await prisma.meal.findMany({
             where: {
-                date: day
+                date: dayInput
             }
         })
         return findMealsDay;

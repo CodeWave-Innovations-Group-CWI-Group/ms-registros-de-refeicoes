@@ -4,13 +4,10 @@ import findHistoryMealsOfUserService from "../services/findUserMealHistoryServic
 
 export async function createMealController(req, res) {
     try{
-        const {user} = req.user; //Depois analisar o retorno 
+        const user = req.user;
         const menuId = req.body;
 
-        console.log(user);
-        console.log(menuId);
-
-        const createMeal = await createMealService(user, menuId);
+        const createMeal = await createMealService(user.id, menuId.menuId);
         return res.status(201).json({
             createMeal
         })
@@ -39,7 +36,8 @@ export async function findHistoryMealsOfUserController(req, res) {
 export async function findNumberOfMealsOfDateController(req, res) {
     try{
         const day = req.body;
-        const mealsDay = await findNumberOfMealsOfDateService(day);
+        console.log(day.day);
+        const mealsDay = await findNumberOfMealsOfDateService(day.day);
         return res.status(200).json({
             mealsDay
         })
@@ -51,4 +49,3 @@ export async function findNumberOfMealsOfDateController(req, res) {
 }
 
 
-export {createMealService, findHistoryMealsOfUserController, findNumberOfMealsOfDateController}

@@ -1,4 +1,4 @@
-import { findHistoryOfMealsOfDateRepository, findNumberOfMealsOfDateRepository } from "../repository/mealRepository";
+import { findHistoryOfMealsOfDateRepository, findNumberOfMealsOfDateRepository } from "../repository/mealRepository.js";
 
 export default async function findNumberOfMealsOfDateService(day) {
     try {
@@ -11,6 +11,7 @@ export default async function findNumberOfMealsOfDateService(day) {
         };
 
     } catch (error) {
+        console.error(error)
         throw error;
     }
 }

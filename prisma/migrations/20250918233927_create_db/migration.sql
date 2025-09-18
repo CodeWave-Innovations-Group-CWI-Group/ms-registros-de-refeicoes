@@ -3,7 +3,7 @@ CREATE TABLE "public"."Meal" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "menuId" TEXT NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "date" TEXT NOT NULL,
     "shift" TEXT NOT NULL,
 
     CONSTRAINT "Meal_pkey" PRIMARY KEY ("id")
