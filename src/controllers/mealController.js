@@ -1,0 +1,54 @@
+import createMealService from "../services/createMealService.js";
+import findNumberOfMealsOfDateService from "../services/findNumberOfMealsOfDate.js";
+import findHistoryMealsOfUserService from "../services/findUserMealHistoryService.js";
+
+export async function createMealController(req, res) {
+    try{
+        const {user} = req.user; //Depois analisar o retorno 
+        const menuId = req.body;
+
+        console.log(user);
+        console.log(menuId);
+
+        const createMeal = await createMealService(user, menuId);
+        return res.status(201).json({
+            createMeal
+        })
+    }catch(error){
+        return res.status(500).json({
+            error: "Erro no servidor"
+        })
+    }
+}
+
+export async function findHistoryMealsOfUserController(req, res) {
+    try{
+        const userId = req.user.userId;
+        const mealsUser = await findHistoryMealsOfUserService(userId);
+        return res.status(200).json({
+            mealsUser
+        })
+    }catch(error){
+        return res.status(500).json({
+            error: "Erro no servidor"
+        })
+    }
+}
+
+
+export async function findNumberOfMealsOfDateController(req, res) {
+    try{
+        const day = req.body;
+        const mealsDay = await findNumberOfMealsOfDateService(day);
+        return res.status(200).json({
+            mealsDay
+        })
+    }catch(error){
+        return res.status(500).json({
+            error: "Erro no servidor"
+        })
+    }
+}
+
+
+export {createMealService, findHistoryMealsOfUserController, findNumberOfMealsOfDateController}
