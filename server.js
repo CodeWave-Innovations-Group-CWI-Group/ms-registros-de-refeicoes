@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -17,4 +17,7 @@ app.use(cors(corsOptions));
 
 app.use('/meal', mealRoutes);
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000; 
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
