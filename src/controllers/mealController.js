@@ -21,7 +21,7 @@ export async function createMealController(req, res) {
 export async function findHistoryMealsOfUserController(req, res) {
     try{
         //const userId = req.user.userId;
-        const {userId, menuId} = req.body;
+        const {userId} = req.params;
         const mealsUser = await findHistoryMealsOfUserService(userId);
         return res.status(200).json({
             mealsUser
@@ -36,7 +36,7 @@ export async function findHistoryMealsOfUserController(req, res) {
 
 export async function findNumberOfMealsOfDateController(req, res) {
     try{
-        const day = req.body;
+        const day = req.params;
         console.log(day.day);
         const mealsDay = await findNumberOfMealsOfDateService(day.day);
         return res.status(200).json({
