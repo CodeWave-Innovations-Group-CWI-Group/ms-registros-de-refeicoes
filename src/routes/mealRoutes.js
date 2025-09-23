@@ -4,7 +4,7 @@ import { createMealController, findHistoryMealsOfUserController, findNumberOfMea
 const routes = express.Router();
 
 routes.post("/create", createMealController);
-routes.get("/user/meals/history", authMiddleware, findHistoryMealsOfUserController);
-routes.get("/day", authMiddleware, findNumberOfMealsOfDateController);
+routes.get("/user/meals/history", findHistoryMealsOfUserController);
+routes.get("/day", findNumberOfMealsOfDateController);
 
 export default routes;

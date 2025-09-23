@@ -20,7 +20,8 @@ export async function createMealController(req, res) {
 
 export async function findHistoryMealsOfUserController(req, res) {
     try{
-        const userId = req.user.userId;
+        //const userId = req.user.userId;
+        const {userId, menuId} = req.body;
         const mealsUser = await findHistoryMealsOfUserService(userId);
         return res.status(200).json({
             mealsUser
