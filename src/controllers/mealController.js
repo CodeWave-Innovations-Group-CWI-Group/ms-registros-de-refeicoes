@@ -5,9 +5,9 @@ import findHistoryMealsOfUserService from "../services/findUserMealHistoryServic
 export async function createMealController(req, res) {
     try{
         //const user = req.user;
-        const {userId, menuId} = req.body;
+        const {userId, menuId, shift} = req.body;
 
-        const createMeal = await createMealService(userId, menuId);
+        const createMeal = await createMealService(userId, menuId, shift);
         return res.status(201).json({
             createMeal
         })
