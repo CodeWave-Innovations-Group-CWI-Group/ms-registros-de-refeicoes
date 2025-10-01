@@ -2,6 +2,8 @@
 
 ## Microserviço responsável por registrar refeições realizadas pelos usuários em diferentes turnos do dia (manhã, tarde e noite). Ele controla o histórico de refeições por usuário, contabiliza refeições por data e garante regras de funcionamento conforme os horários definidos.
 
+
+
 ### 🚀 Tecnologias Utilizadas
 
 Node.js com Express
@@ -14,6 +16,8 @@ JWT (validação de autenticação via serviço externo)
 
 Ngrok (exposição do serviço de autenticação externo)
 
+
+
 ### 📂 Estrutura do Projeto
 src/
  ├── controllers/       # Camada de controle (requisições/respostas)
@@ -24,24 +28,26 @@ src/
  └── prisma/            # Schema do banco de dados
 
 ### ⚙️ Configuração do Ambiente
-1. Clonar o repositório
+#### 1. Clonar o repositório
 git clone https://github.com/CodeWave-Innovations-Group-CWI-Group/ms-registros-de-refeicoes.git
 cd ms-registros-de-refeicoes
 
-2. Instalar dependências
+#### 2. Instalar dependências
 npm install
 
-3. Configurar variáveis de ambiente
+#### 3. Configurar variáveis de ambiente
 
 Crie um arquivo .env na raiz do projeto com:
 
 DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome_do_banco"
 
-4. Executar as migrations
+#### 4. Executar as migrations
 npx prisma migrate dev
 
-5. Rodar o projeto
+#### 5. Rodar o projeto
 node server
+
+
 
 ### 🗄️ Banco de Dados
 Modelo Meal
@@ -61,6 +67,8 @@ model Meal {
 
 Cada refeição é única por usuário + data + turno (não é possível registrar duas refeições iguais no mesmo período).
 
+
+
 ### 🔑 Autenticação
 
 Todas as rotas utilizam um middleware de autenticação (authMiddleware).
@@ -72,8 +80,11 @@ GET /api/v1/profile/me/
 
 Se o token for válido, as informações do usuário são anexadas em req.user.
 
+
+
 ### 📌 Rotas Disponíveis
-➕ Criar refeição
+
+#### ➕ Criar refeição
 
 POST /meals/create
 
@@ -107,7 +118,9 @@ Resposta de sucesso (201):
   }
 }
 
-📜 Histórico de refeições de um usuário
+
+
+#### 📜 Histórico de refeições de um usuário
 
 GET /meals/user/meals/history/:userId
 
@@ -130,7 +143,9 @@ Resposta:
   ]
 }
 
-📊 Refeições de um dia
+
+
+#### 📊 Refeições de um dia
 
 GET /meals/day/:day
 
@@ -156,6 +171,8 @@ Resposta:
   }
 }
 
+
+
 ### 🛡️ Regras de Negócio
 
 Cada usuário pode registrar apenas uma refeição por turno do dia.
@@ -167,4 +184,5 @@ Permitido: 06:00 → 23:59
 Negado: 00:00 → 05:59
 
 A autenticação é obrigatória via token JWT.
+
 
