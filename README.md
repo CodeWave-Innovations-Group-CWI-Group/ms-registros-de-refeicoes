@@ -20,11 +20,17 @@ Ngrok (exposição do serviço de autenticação externo)
 
 ### 📂 Estrutura do Projeto
 src/
+
  controllers/       # Camada de controle (requisições/respostas)
+ 
  middlewares/       # Middleware de autenticação
+ 
  repository/        # Acesso ao banco via Prisma
+ 
  services/          # Regras de negócio
+ 
  routes/            # Definição das rotas
+ 
  prisma/            # Schema do banco de dados
 
 ### ⚙️ Configuração do Ambiente
@@ -184,6 +190,7 @@ Permitido: 06:00 → 23:59
 Negado: 00:00 → 05:59
 
 A autenticação é obrigatória via token JWT.
+
 
 
 
