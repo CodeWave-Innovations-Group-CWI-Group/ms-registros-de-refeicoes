@@ -1,4 +1,4 @@
-##🍽️ MS Registros de Refeições
+## 🍽️ MS Registros de Refeições
 
 ## Microserviço responsável por registrar refeições realizadas pelos usuários em diferentes turnos do dia (manhã, tarde e noite). Ele controla o histórico de refeições por usuário, contabiliza refeições por data e garante regras de funcionamento conforme os horários definidos.
 
@@ -167,3 +167,4 @@ Permitido: 06:00 → 23:59
 Negado: 00:00 → 05:59
 
 A autenticação é obrigatória via token JWT.
+
