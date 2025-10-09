@@ -11,7 +11,7 @@ export default async function authMiddleware(req, res, next) {
     const cleanToken = token.replace("Bearer ", "");
 
     try {
-        const response = await axios.get("http://22c4482ea69b.ngrok-free.app/api/v1/auth/validate-token/", {
+        const response = await axios.get("https://22c4482ea69b.ngrok-free.app/api/v1/auth/validate-token/", {
             headers: { Authorization: `${cleanToken}` }
         });
 
